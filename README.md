@@ -12,7 +12,8 @@ Run `bundle exec shotgun` to runserver.
 
 Use `binding.pry` for testing. 
 
-Use `bundle exec rspec` to run rspec testing.
+Use `bundle exec rspec` to run rspec testing. Remember to set up your development database in
+spec/spec_helper.rb.
 
 Remember to start postgresql on local machine to get access to
 the database named development for development phase.
