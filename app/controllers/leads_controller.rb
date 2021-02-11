@@ -45,11 +45,12 @@ class LeadsController < ApplicationController
       redirect "/leads/show/#{@lead.id}"
     else
       session[:error] = "Invalid credentials for leads."
+
       redirect "/leads/login"
     end
   end
 
-  # Lead main page
+  # Lead main page for each lead - and retrieve which spots the lead currently has
   get "/leads/show/:lead_id" do
     require_signed_in_lead
 

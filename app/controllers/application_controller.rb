@@ -11,14 +11,9 @@ class ApplicationController < Sinatra::Base
     set :session_secret, 'super_secret_hash_password'
   end
 
-  # Index page
+  # Index page for sign up and login
   get "/" do
     erb :index
-  end
-
-  # Login page
-  get "/login" do
-    erb :login
   end
 
   # Log every lead or student out
