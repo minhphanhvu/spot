@@ -1,4 +1,4 @@
-Use rspec to implement rspec
+Use rspec to implement testing
 
 Some values for database to test by creating two leads and two students
 
