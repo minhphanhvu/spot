@@ -39,6 +39,6 @@ class StudentsController < ApplicationController
 
   # Student sign up for a spot
   get "/students/spot/:spot_id" do
-
+    # Register student to the spots
   end
 end

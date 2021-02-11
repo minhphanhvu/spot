@@ -8,6 +8,8 @@
 
 [] Set up rake automation tasks?
 
+[] Implement login for students
+
 [] Key validation is a feature needed to be fixed in the future
 -> can someone hack by sending data in correct forms and know how 
 the sign-up forms are designed
