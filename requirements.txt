@@ -13,7 +13,7 @@ the sign-up forms are designed
 -> maybe create an admin account, only admin can get into 
 to modify database (change key, etc...)
 
-x Password is required
+[x] Password is required
 
 [ ] Learn rspec and add testing
 
