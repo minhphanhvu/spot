@@ -1,0 +1,23 @@
+x make sure leads have some key to validate before sign up
+-> temporary key: super_secret_lead
+
+x same thing with students
+-> temporary key: super_secret_student
+
+Key validation is a feature needed to be fixed in the future
+-> can someone hack by sending data in correct forms and know how 
+the sign-up forms are designed
+-> place the key in the databse
+-> maybe create an admin account, only admin can get into 
+to modify database (change key, etc...)
+
+Password is required
+
+Password needs confirmation (enter password second time)
+
+Reinforce all unique constraint when people sign up as leads and/or students
+
+Implement database interactions first
+
+Implement authorization for students and leads
+Implement authentification for studetns and leads -> implement login
