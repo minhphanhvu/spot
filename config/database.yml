@@ -1,17 +1,17 @@
 development:
   adapter: postgresql
   encoding: utf8
-  database: development
+  database: spot_development
   pool: 2
 production:
   adapter: postgresql
   encoding: utf8
   pool: 5
   host: <%= ENV['DATABASE_HOST'] %>
-  database: production
+  database: spot_production
 test:
   adapter: postgresql
-  database: database-test
+  database: spot_test
   pool: 5
   encoding: utf8
   timeout: 5000
