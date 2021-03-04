@@ -43,3 +43,15 @@ users.each do |user|
   User.create(user)
 end
 
+#Pre-populaate db with spots.
+spots = [
+  {lead_id: 1, course_id: 1, week_beginning: '2021-03-28', session_datetime: '2021-03-30 19:00', student_limit: 5, date_created: '2021-02-28'},
+  {lead_id: 2, course_id: 2, week_beginning: '2021-03-28', student_limit: 5}
+
+]
+
+spots.each do |spot|
+  Spot.create(spot)
+end
+
+
