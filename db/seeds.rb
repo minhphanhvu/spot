@@ -46,12 +46,29 @@ end
 #Pre-populaate db with spots.
 spots = [
   {lead_id: 1, course_id: 1, week_beginning: '2021-03-28', session_datetime: '2021-03-30 19:00', student_limit: 5, date_created: '2021-02-28'},
-  {lead_id: 2, course_id: 2, week_beginning: '2021-03-28', student_limit: 5}
-
+  {lead_id: 2, course_id: 2, week_beginning: '2021-03-28', student_limit: 5},
+  {lead_id: 3, course_id: 4, week_beginning: '2021-03-28', student_limit: 5},
+  {lead_id: 4, course_id: 4, week_beginning: '2021-03-28', student_limit: 5}
 ]
 
 spots.each do |spot|
   Spot.create(spot)
 end
+
+#Add users to spots. Not working at the moment, trying to figure out the naming convention ActiveRecord uses.
+#Must reinforce max student limit.
+spot_students = [
+  {spot_id: 1, student_id: 5},
+  {spot_id: 1, student_id: 6},
+  {spot_id: 1, student_id: 7},
+  {spot_id: 1, student_id: 8},
+  {spot_id: 1, student_id: 9}
+]
+
+spot_students.each do |student_spot|
+  SpotStudent.create(student_spot)
+end
+
+
 
 
