@@ -46,6 +46,7 @@ end
 # Pre-populaate db with spots.
 # Only leads with id 1-3 have sessions registered, lead id 4 has no session
 # Change the week_beginning, session_datetime, and date_created up to one more week to cover the local time
+# date_created starts on Saturday, week_beginning starts on Sunday, session_datetime starts on Thursday.
 
 spots = [
   {lead_id: 1, course_id: 1, week_beginning: '2021-03-07', session_datetime: '2021-03-11 19:00', student_limit: 5, date_created: '2021-03-06'},
@@ -72,14 +73,12 @@ end
 # Users id (student_id) 8, 9 will register for RB121-129 (spot_id 2, 4, 12). spot_id 12 is in archive (already finished session)
 # Users id (student_id) 10 will register for RB130-139 (spot_id 3, 7, 10, and 13). spot_id 13 is in archive (already finished session)
 # ...spot_id 7 and 10 will not have students registered (empty sessions)
-# All spots with course_id (4) which is LS170-171 will not have students registered
+# All spots with course_id (4) (spot_id 8 and 9) which is LS170-171 will not have students registered
 
 spot_students = [
   {spot_id: 1, student_id: 5},
   {spot_id: 1, student_id: 6},
   {spot_id: 1, student_id: 7},
-  {spot_id: 2, student_id: 8},
-  {spot_id: 2, student_id: 9},
   {spot_id: 5, student_id: 5},
   {spot_id: 5, student_id: 6},
   {spot_id: 6, student_id: 5},
