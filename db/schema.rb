@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2021_02_25_040811) do
     t.date "week_beginning"
     t.datetime "session_datetime"
     t.integer "student_limit"
-    t.date "date_created"
+    t.date "date_created", DateTime.now
     t.boolean "archive", default: false
   end
 

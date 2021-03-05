@@ -86,7 +86,7 @@ spot_students = [
   {spot_id: 11, student_id: 5},
   {spot_id: 11, student_id: 6},
   {spot_id: 2, student_id: 8},
-  {spot_id: 2, student_id: 9},
+  {spot_id: 2, student_id: 9}
   {spot_id: 4, student_id: 8},
   {spot_id: 4, student_id: 9},
   {spot_id: 12, student_id: 9},

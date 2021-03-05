@@ -42,3 +42,9 @@ the database named development for development phase.
 
 See the notes.txt for some pre-determined SQL statements to test
 development database.
+
+# Steps to drop and create database
+1. Run `bundle exec rake db:drop` if you have the spot_development database on your local to drop it (add RAILS_ENV=development if there is any error).
+2/ Run `bundle exec rake db:create RAILS_ENV=development`  to create databases.
+3/ Run `bundle exec rake db:migrate` to apply migrations from migrations changes to the schema.db.
+4/ Run `bundle exec rake db:seed RAILS_ENV=development` to populate the database `spot_development`.

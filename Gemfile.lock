@@ -38,6 +38,7 @@ GEM
     database_cleaner-active_record (2.0.0)
       activerecord (>= 5.a)
       database_cleaner-core (~> 2.0.0)
+    date (3.1.1)
     diff-lcs (1.4.4)
     eventmachine (1.2.7)
     i18n (1.8.8)
@@ -111,6 +112,7 @@ DEPENDENCIES
   bcrypt
   capybara
   database_cleaner!
+  date
   pg
   pry
   rack
