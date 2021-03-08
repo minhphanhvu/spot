@@ -1,30 +1,30 @@
 <section id="" >
 
   <header>
-    <h1><%= "Welcome #{user.username}!"  %></h1>
+    <h1><%= "Welcome #{@user.username}!"  %></h1>
       <h3>These are your current sessions:</h3>
       <ul>
-        <li>
           <% @spots.each do |spot| %>
-            <%= spot.course.name %>
+          <li>
+            <p><%= spot.course.name %> at <%= format_time(spot.session_datetime.in_time_zone('Eastern Time (US & Canada)')) %> EST time.</p>
+          </li>
           <% end %>
-        </li>
       </ul>
-     <h3>These are all of the sessions:</h3>
+     <h3>These are all of the sessions in the next week:</h3>
       <ul>
-        <li>
           <% @all_spots.each do |spot| %>
-            <%= spot.course.name %>
+            <li>
+            <p><%= spot.course.name %> at <%= format_time(spot.session_datetime.in_time_zone('Eastern Time (US & Canada)')) %> EST time.</p>
+            </li>
           <% end %>
-        </li>
       </ul>
       <h3>These are the sessions you've attended:</h3>
       <ul>
-        <li>
           <% @previous_spots.each do |spot| %>
-            <%= spot.course.name %>
+            <li>
+            <p><%= spot.course.name %> on <%= format_time(spot.session_datetime.in_time_zone('Eastern Time (US & Canada)')) %> EST time.</p>
+            </li>
           <% end %>
-        </li>
       </ul>
   </header>
 
