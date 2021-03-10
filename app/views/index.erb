@@ -5,16 +5,16 @@
       <h3>These are your current sessions:</h3>
       <ul>
           <% @spots.each do |spot| %>
-          <li>
-            <p><%= spot.course.name %> at <%= format_time(spot.session_datetime.in_time_zone('Eastern Time (US & Canada)')) %> EST time.</p>
-          </li>
+            <li>
+              <p><%= spot.course.name %> at <%= format_time_output(spot.session_datetime.in_time_zone('Eastern Time (US & Canada)')) %> EST.</p>
+            </li>
           <% end %>
       </ul>
      <h3>These are all of the sessions in the next week:</h3>
       <ul>
           <% @all_spots.each do |spot| %>
             <li>
-            <p><%= spot.course.name %> at <%= format_time(spot.session_datetime.in_time_zone('Eastern Time (US & Canada)')) %> EST time.</p>
+            <p><%= spot.course.name %> at <%= format_time_output(spot.session_datetime.in_time_zone('Eastern Time (US & Canada)')) %> EST.</p>
             </li>
           <% end %>
       </ul>
@@ -22,11 +22,27 @@
       <ul>
           <% @previous_spots.each do |spot| %>
             <li>
-            <p><%= spot.course.name %> on <%= format_time(spot.session_datetime.in_time_zone('Eastern Time (US & Canada)')) %> EST time.</p>
+            <p><%= spot.course.name %> on <%= format_time_output(spot.session_datetime.in_time_zone('Eastern Time (US & Canada)')) %> EST.</p>
             </li>
           <% end %>
       </ul>
   </header>
 
-
 </section>
+
+<form action="/new/lead/<%= params[:username] %>" method="post">
+
+  <label for="spot_time">Choose a time (EST Time) for your session:</label>
+  <input type="datetime-local" id="spot_time"
+        name="spot_time">
+
+  <label for="course_id">Choose a course to lead:</label>
+  <select name="course_id" id="cars">
+    <% @courses.each do |course| %>
+      <option value="<%= course.id %>"><%= course.name %>
+    <% end %>
+  </select>
+
+  <input type="submit" value="Register a spot session">
+
+</form>

@@ -1,8 +1,7 @@
 require './config/environment'
-# Pry for debug -> take it out before deployment for production
+
 require 'pry' # For bugging, remove before production
-require 'date'
-require "active_support/core_ext/time" # Support from ActiveRecord library to convert time in Ruby
+require "active_support/all" # support some time and datetime methods from ActiveRecord
 
 class ApplicationController < Sinatra::Base
   configure do
@@ -18,8 +17,16 @@ class ApplicationController < Sinatra::Base
 
   helpers do
 
-    def format_time(time)
+    def format_time_output(time) # take argument as a datetime postgresql object
       time.strftime('%Y-%m-%d %H:%M')
+    end
+
+    def week_beginning_input(time) # take argument as a time string -> convert to Date object
+      Date.strptime(time, '%Y-%m-%d').beginning_of_week.strftime('%Y-%m-%d')
+    end
+
+    def session_datetime_input(time) # take argumnet as a time string -> convert to DateTime object
+      DateTime.strptime(time, '%Y-%m-%dT%H:%M') + 5.hours # add 5 more hours to UTC time
     end
 
   end

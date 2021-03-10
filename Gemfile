@@ -10,6 +10,7 @@ gem 'thin'
 gem 'pg'
 gem 'shotgun'
 gem 'bcrypt'
+gem 'date'
 ruby "2.7.1"
 
 group :development, :test do
