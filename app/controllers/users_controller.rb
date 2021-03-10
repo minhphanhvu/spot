@@ -17,14 +17,24 @@ class UsersController < ApplicationController
     week_beginning = week_beginning_input(params[:spot_time])
     session_datetime = session_datetime_input(params[:spot_time])
 
-    @new_spot = {lead_id: lead_id,
-                 course_id: course_id,
-                 week_beginning: week_beginning,
-                 session_datetime: session_datetime,
-                 student_limit: 5,
-                 date_created: DateTime.now
-                }
+    @new_spot = {
+      lead_id: lead_id,
+      course_id: course_id,
+      week_beginning: week_beginning,
+      session_datetime: session_datetime,
+      student_limit: 5,
+      date_created: DateTime.now
+      }
     Spot.create(@new_spot)
+
+    redirect "/index/#{params[:username]}"
+  end
+
+  # Delete the scheduled spot session
+  delete '/delete/:username/:spot_id' do
+    spot_id = params[:spot_id]
+    SpotStudent.where(:spot_id => spot_id).destroy_all # Delete all rows from spot_students table first (foreign key constraints)
+    Spot.destroy(spot_id)
 
     redirect "/index/#{params[:username]}"
   end

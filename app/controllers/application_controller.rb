@@ -4,11 +4,15 @@ require 'pry' # For bugging, remove before production
 require "active_support/all" # support some time and datetime methods from ActiveRecord
 
 class ApplicationController < Sinatra::Base
+
   configure do
     set :public_folder, 'public' # Set the public path for javascript and css codes
     set :views, 'app/views' # Set the path for erb to read
     enable :sessions # Enable sessions
     set :session_secret, 'super_secret_hash_password'
+    set :environment, :development # set environment
+    # Enables put and delete methods with :method_override
+    enable :method_override # Sinatra::Base disables method_override by default
   end
 
   get '/' do

@@ -6,7 +6,11 @@
       <ul>
           <% @spots.each do |spot| %>
             <li>
-              <p><%= spot.course.name %> at <%= format_time_output(spot.session_datetime.in_time_zone('Eastern Time (US & Canada)')) %> EST.</p>
+              <p style="display: inline-block"><%= spot.course.name %> at <%= format_time_output(spot.session_datetime.in_time_zone('Eastern Time (US & Canada)')) %> EST.</p>
+              <form style="display: inline-block" action="/delete/<%= @user.username %>/<%= spot.id %>" method="post">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="submit" value="Cancel session">
+              </form>
             </li>
           <% end %>
       </ul>
