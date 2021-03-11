@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_11_093810) do
+ActiveRecord::Schema.define(version: 2021_03_11_100239) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2021_03_11_093810) do
     t.date "week_beginning"
     t.datetime "session_datetime"
     t.integer "student_limit"
-    t.date "date_created"
+    t.date "created_at"
     t.boolean "archive", default: false
   end
 
