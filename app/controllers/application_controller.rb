@@ -29,9 +29,9 @@ class ApplicationController < Sinatra::Base
       Date.strptime(time, '%Y-%m-%d').beginning_of_week.strftime('%Y-%m-%d')
     end
 
-    def session_datetime_input(time) # take argumnet as a time string -> convert to DateTime object
-      DateTime.strptime(time, '%Y-%m-%dT%H:%M') + 5.hours # add 5 more hours to UTC time
-    end
+    # def session_datetime_input(time) # take argumnet as a time string -> convert to DateTime object
+    #   DateTime.strptime(time, '%Y-%m-%dT%H:%M') + 5.hours # add 5 more hours to UTC time
+    # end
 
   end
 end

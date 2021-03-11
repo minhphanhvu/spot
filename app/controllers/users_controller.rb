@@ -12,20 +12,22 @@ class UsersController < ApplicationController
 
   # Lead register a new session
   post '/new/lead/:username' do
-    lead_id = User.find_by(username: params[:username]).id
+    user = User.find_by(username: params[:username])
+    lead_id = user.id
     course_id = params[:course_id]
     week_beginning = week_beginning_input(params[:spot_time])
-    session_datetime = session_datetime_input(params[:spot_time])
+    
+    session_datetime = params[:spot_time].in_time_zone(user.timezone)
 
-    @new_spot = {
+    new_spot = {
       lead_id: lead_id,
       course_id: course_id,
       week_beginning: week_beginning,
       session_datetime: session_datetime,
       student_limit: 5,
       date_created: DateTime.now
-      }
-    Spot.create(@new_spot)
+    }
+    Spot.create(new_spot)
 
     redirect "/index/#{params[:username]}"
   end
