@@ -2,6 +2,8 @@
 
   <header>
     <h1><%= "Welcome #{@user.username}!"  %></h1>
+
+    <p>All times and dates are show in your timezone: <%= @user.timezone %></p>
       <h3>These are your current sessions:</h3>
       <ul>
           <% @spots.each do |spot| %>
@@ -32,11 +34,43 @@
       </ul>
   </header>
 
+    <h3>These are your current sessions:</h3>
+    <ul>
+        <% @spots.each do |spot| %>
+          <li>
+            <p style="display: inline-block"><%= spot.course.name %> at <%= format_time_output(spot.session_datetime.in_time_zone(@user.timezone)) %></p>
+            <form style="display: inline-block" action="/delete/<%= @user.username %>/<%= spot.id %>" method="post">
+              <input type="hidden" name="_method" value="DELETE">
+              <input type="submit" value="Cancel session">
+            </form>
+          </li>
+        <% end %>
+    </ul>
+  
+   <h3>These are all of the sessions in the next week:</h3>
+    <ul>
+        <% @all_spots.each do |spot| %>
+          <li>
+          <p><%= spot.course.name %> at <%= format_time_output(spot.session_datetime.in_time_zone(@user.timezone)) %></p>
+          </li>
+        <% end %>
+    </ul>
+  
+    <h3>These are the sessions you've attended:</h3>
+    <ul>
+        <% @previous_spots.each do |spot| %>
+          <li>
+          <p><%= spot.course.name %> on <%= format_time_output(spot.session_datetime.in_time_zone(@user.timezone)) %></p>
+          </li>
+        <% end %>
+    </ul>
+
 </section>
 
+<h2>Create a new spot and sign up to lead it</h2>
 <form action="/new/lead/<%= params[:username] %>" method="post">
 
-  <label for="spot_time">Choose a time (EST Time) for your session:</label>
+  <label for="spot_time">Choose a time for your session:</label>
   <input type="datetime-local" id="spot_time"
         name="spot_time">
 
@@ -50,3 +84,4 @@
   <input type="submit" value="Register a spot session">
 
 </form>
+
