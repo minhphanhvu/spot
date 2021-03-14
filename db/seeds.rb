@@ -7,7 +7,7 @@ DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 # data is used for testing only.
 
 def generate_random_day
-  Date.parse(DAYS[rand(0..5)])
+  Date.parse(DAYS[rand(0..5)]) + 7.days
 end
 
 def generate_random_hour
@@ -22,8 +22,15 @@ def generate_random_session_datetime
   (generate_random_day + generate_random_hour + generate_half_hour).to_datetime
 end
 
-monday = Date.parse('Monday')
-last_thursday = Date.parse('Thursday') - 7.days
+def generate_random_archive_day
+  Date.parse(DAYS[rand(0..5)]) - 7.days
+end
+
+def generate_archive_session_datetime
+  (generate_random_archive_day + generate_random_hour + generate_half_hour).to_datetime
+end
+
+next_monday = Date.parse('Monday') + 7.days 
 
 # Pre-populate data for admin roles and pre-determined courses from Launch School
 
@@ -74,19 +81,19 @@ end
 # date_created starts on Saturday, week_beginning starts on Sunday, session_datetime starts on Thursday.
 
 spots = [
-  {lead_id: 1, course_id: 1, week_beginning: monday, session_datetime: generate_random_session_datetime, student_limit: 5,created_at: last_thursday},
-  {lead_id: 1, course_id: 2, week_beginning: monday, session_datetime: generate_random_session_datetime, student_limit: 5,created_at: last_thursday},
-  {lead_id: 1, course_id: 3, week_beginning: monday, session_datetime: generate_random_session_datetime, student_limit: 5,created_at: last_thursday},
-  {lead_id: 1, course_id: 2, week_beginning: monday, session_datetime: generate_random_session_datetime, student_limit: 5,created_at: last_thursday},
-  {lead_id: 2, course_id: 1, week_beginning: monday, session_datetime: generate_random_session_datetime, student_limit: 5,created_at: last_thursday},
-  {lead_id: 2, course_id: 1, week_beginning: monday, session_datetime: generate_random_session_datetime, student_limit: 5,created_at: last_thursday},
-  {lead_id: 2, course_id: 3, week_beginning: monday, session_datetime: generate_random_session_datetime, student_limit: 5,created_at: last_thursday},
-  {lead_id: 2, course_id: 4, week_beginning: monday, session_datetime: generate_random_session_datetime, student_limit: 5,created_at: last_thursday},
-  {lead_id: 3, course_id: 4, week_beginning: monday, session_datetime: generate_random_session_datetime, student_limit: 5,created_at: last_thursday},
-  {lead_id: 3, course_id: 3, week_beginning: monday, session_datetime: generate_random_session_datetime, student_limit: 5,created_at: last_thursday},
-  {lead_id: 1, course_id: 1, week_beginning: monday, session_datetime: generate_random_session_datetime, student_limit: 5,created_at: last_thursday, archive: 'true'},
-  {lead_id: 1, course_id: 2, week_beginning: monday, session_datetime: generate_random_session_datetime, student_limit: 5,created_at: last_thursday, archive: 'true'},
-  {lead_id: 1, course_id: 3, week_beginning: monday, session_datetime: generate_random_session_datetime, student_limit: 5,created_at: last_thursday, archive: 'true'}
+  {lead_id: 1, course_id: 1, week_beginning: next_monday, session_datetime: generate_random_session_datetime, student_limit: 5},
+  {lead_id: 1, course_id: 2, week_beginning: next_monday, session_datetime: generate_random_session_datetime, student_limit: 5},
+  {lead_id: 1, course_id: 3, week_beginning: next_monday, session_datetime: generate_random_session_datetime, student_limit: 5},
+  {lead_id: 1, course_id: 2, week_beginning: next_monday, session_datetime: generate_random_session_datetime, student_limit: 5},
+  {lead_id: 2, course_id: 1, week_beginning: next_monday, session_datetime: generate_random_session_datetime, student_limit: 5},
+  {lead_id: 2, course_id: 1, week_beginning: next_monday, session_datetime: generate_random_session_datetime, student_limit: 5},
+  {lead_id: 2, course_id: 3, week_beginning: next_monday, session_datetime: generate_random_session_datetime, student_limit: 5},
+  {lead_id: 2, course_id: 4, week_beginning: next_monday, session_datetime: generate_random_session_datetime, student_limit: 5},
+  {lead_id: 3, course_id: 4, week_beginning: next_monday, session_datetime: generate_random_session_datetime, student_limit: 5},
+  {lead_id: 3, course_id: 3, week_beginning: next_monday, session_datetime: generate_random_session_datetime, student_limit: 5},
+  {lead_id: 1, course_id: 1, week_beginning: next_monday, session_datetime: generate_archive_session_datetime, student_limit: 5, archive: 'true'},
+  {lead_id: 1, course_id: 2, week_beginning: next_monday, session_datetime: generate_archive_session_datetime, student_limit: 5, archive: 'true'},
+  {lead_id: 1, course_id: 3, week_beginning: next_monday, session_datetime: generate_archive_session_datetime, student_limit: 5, archive: 'true'}
 ]
 
 spots.each do |spot|
