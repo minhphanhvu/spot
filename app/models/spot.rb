@@ -3,4 +3,6 @@ class Spot < ActiveRecord::Base
   has_many :users, :through => :spot_students
   belongs_to :user
   belongs_to :course
+
+  scope :ordered, -> { includes(:course).order('courses.name') }
 end

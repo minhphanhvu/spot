@@ -3,8 +3,8 @@ class UsersController < ApplicationController
   # Home page for each user
   get '/index/:username' do
     @user = User.find_by(username: params[:username])
-    @spots = @user.spots.where('session_datetime >= ?', Time.now.utc)
-    @all_spots = Spot.where('session_datetime >= ?', Time.now.utc).order(session_datetime: :asc)
+    @spots = @user.spots.where('week_beginning >= ?', Time.now.utc)
+    @all_spots = Spot.ordered.where('week_beginning >= ?', Time.now.utc)
     @previous_spots = @user.spots.where('session_datetime <= ?', Time.now.utc)
     @courses = Course.all
     erb :index, layout: :layout
