@@ -48,3 +48,19 @@ development database.
 2. Run `bundle exec rake db:create RAILS_ENV=development`  to create databases.
 3. Run `bundle exec rake db:migrate` to apply migrations from migrations changes to the schema.db.
 4. Run `bundle exec rake db:seed RAILS_ENV=development` to populate the database `spot_development`.
+
+# Create spots for the coming week
+`bundle exec rake spot:create_spots`
+
+# Create new migrations
+bundle exec rake db:create_migration NAME=name_of_migration_inserted_here
+bundle exec rake db:migrate
+
+# Branches
+We create branches for local dev and push these live to be integrated into `main`. 
+
+git fetch <- this will tell us what's changed
+git pull <- on main branch to get the latest version
+git co -b <branch name> <- to create a new branch
+(work away and commit changes. When ready...)
+git push --set-upstream origin <branch name> <- to push to github
