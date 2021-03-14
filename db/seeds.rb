@@ -1,5 +1,30 @@
 # Pre-populate data for admin roles and pre-determined courses from Launch School
 
+# helpers method and variables
+DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+# Exclude Sunday. Sunday date may appear in the database due to Ruby runs in local time, but
+# is converted to UTC behind the scene (time zone issue). No important issue since
+# data is used for testing only.
+
+def generate_random_day
+  Date.parse(DAYS[rand(0..5)])
+end
+
+def generate_random_hour
+  rand(0..24).hours # Methods hours, days, minutes are supported by 'active_support/all' library
+end
+
+def generate_half_hour
+  (rand(0..100) <= 50 ? 0 : 30).minutes
+end
+
+def generate_random_session_datetime
+  (generate_random_day + generate_random_hour + generate_half_hour).to_datetime
+end
+
+monday = Date.parse('Monday')
+last_thursday = Date.parse('Thursday') - 7.days
+
 # Pre-populate data for admin roles and pre-determined courses from Launch School
 
 courses = [
@@ -49,19 +74,19 @@ end
 # date_created starts on Saturday, week_beginning starts on Sunday, session_datetime starts on Thursday.
 
 spots = [
-  {lead_id: 1, course_id: 1, week_beginning: '2021-03-07', session_datetime: '2021-03-11 19:00', student_limit: 5},
-  {lead_id: 1, course_id: 2, week_beginning: '2021-03-07', session_datetime: '2021-03-11 19:01', student_limit: 5},
-  {lead_id: 1, course_id: 3, week_beginning: '2021-03-07', session_datetime: '2021-03-11 19:02', student_limit: 5},
-  {lead_id: 1, course_id: 2, week_beginning: '2021-03-07', session_datetime: '2021-03-11 19:03', student_limit: 5},
-  {lead_id: 2, course_id: 1, week_beginning: '2021-03-07', session_datetime: '2021-03-11 19:12', student_limit: 5},
-  {lead_id: 2, course_id: 1, week_beginning: '2021-03-07', session_datetime: '2021-03-11 19:09', student_limit: 5},
-  {lead_id: 2, course_id: 3, week_beginning: '2021-03-07', session_datetime: '2021-03-11 19:10', student_limit: 5},
-  {lead_id: 2, course_id: 4, week_beginning: '2021-03-07', session_datetime: '2021-03-11 19:11', student_limit: 5},
-  {lead_id: 3, course_id: 4, week_beginning: '2021-03-07', session_datetime: '2021-03-11 19:00', student_limit: 5},
-  {lead_id: 3, course_id: 3, week_beginning: '2021-03-07', session_datetime: '2021-03-11 19:00', student_limit: 5},
-  {lead_id: 1, course_id: 1, week_beginning: '2021-02-28', session_datetime: '2021-03-04 19:00', student_limit: 5, archive: 'true'},
-  {lead_id: 1, course_id: 2, week_beginning: '2021-02-28', session_datetime: '2021-03-04 19:00', student_limit: 5, archive: 'true'},
-  {lead_id: 1, course_id: 3, week_beginning: '2021-02-28', session_datetime: '2021-03-04 19:00', student_limit: 5, archive: 'true'}
+  {lead_id: 1, course_id: 1, week_beginning: monday, session_datetime: generate_random_session_datetime, student_limit: 5,created_at: last_thursday},
+  {lead_id: 1, course_id: 2, week_beginning: monday, session_datetime: generate_random_session_datetime, student_limit: 5,created_at: last_thursday},
+  {lead_id: 1, course_id: 3, week_beginning: monday, session_datetime: generate_random_session_datetime, student_limit: 5,created_at: last_thursday},
+  {lead_id: 1, course_id: 2, week_beginning: monday, session_datetime: generate_random_session_datetime, student_limit: 5,created_at: last_thursday},
+  {lead_id: 2, course_id: 1, week_beginning: monday, session_datetime: generate_random_session_datetime, student_limit: 5,created_at: last_thursday},
+  {lead_id: 2, course_id: 1, week_beginning: monday, session_datetime: generate_random_session_datetime, student_limit: 5,created_at: last_thursday},
+  {lead_id: 2, course_id: 3, week_beginning: monday, session_datetime: generate_random_session_datetime, student_limit: 5,created_at: last_thursday},
+  {lead_id: 2, course_id: 4, week_beginning: monday, session_datetime: generate_random_session_datetime, student_limit: 5,created_at: last_thursday},
+  {lead_id: 3, course_id: 4, week_beginning: monday, session_datetime: generate_random_session_datetime, student_limit: 5,created_at: last_thursday},
+  {lead_id: 3, course_id: 3, week_beginning: monday, session_datetime: generate_random_session_datetime, student_limit: 5,created_at: last_thursday},
+  {lead_id: 1, course_id: 1, week_beginning: monday, session_datetime: generate_random_session_datetime, student_limit: 5,created_at: last_thursday, archive: 'true'},
+  {lead_id: 1, course_id: 2, week_beginning: monday, session_datetime: generate_random_session_datetime, student_limit: 5,created_at: last_thursday, archive: 'true'},
+  {lead_id: 1, course_id: 3, week_beginning: monday, session_datetime: generate_random_session_datetime, student_limit: 5,created_at: last_thursday, archive: 'true'}
 ]
 
 spots.each do |spot|
