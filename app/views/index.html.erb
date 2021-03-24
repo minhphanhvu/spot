@@ -84,3 +84,7 @@
   <input type="submit" value="Register a spot session">
 
 </form>
+
+<%= calendar({:year => @year, :month => @month, :abbrev => false, :show_other_months => false, :next_month_text => 'Next month'}) do |date|
+  date
+end %>
