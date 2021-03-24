@@ -1,5 +1,4 @@
 $(document).ready(function() {
-  // $(".day").html(getDayNumber($(".day").html()));
   $(".day").each(function() {
     $(this).html(getDayNumber($(this).html()));
   })
