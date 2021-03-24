@@ -2,6 +2,8 @@ require './config/environment'
 
 require 'pry' # For bugging, remove before production
 require "active_support/all" # support some time and datetime methods from ActiveRecord
+require 'sinatra/reloader'
+require 'calendar_helper'
 
 class ApplicationController < Sinatra::Base
 
@@ -20,6 +22,7 @@ class ApplicationController < Sinatra::Base
   end
 
   helpers do
+    include CalendarHelper
 
     def format_time_output(time) # take argument as a datetime postgresql object
       time.strftime('%Y-%m-%d %H:%M')

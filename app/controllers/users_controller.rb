@@ -7,7 +7,8 @@ class UsersController < ApplicationController
     @all_spots = Spot.ordered.where('week_beginning >= ?', Time.now.utc)
     @previous_spots = @user.spots.where('session_datetime <= ?', Time.now.utc)
     @courses = Course.all
-    erb :index, layout: :layout
+
+    erb :'index.html', layout: :layout
   end
 
   # Lead register a new session
@@ -39,6 +40,13 @@ class UsersController < ApplicationController
     Spot.destroy(spot_id)
 
     redirect "/index/#{params[:username]}"
+  end
+
+  # Testing calendar
+  get "/calendar" do
+    current_time = Time.now
+    @year, @month = [current_time.year, current_time.month]
+    erb :'calendar.html', layout: :layout
   end
 
 end
