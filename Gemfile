@@ -1,4 +1,5 @@
 source 'http://rubygems.org'
+ruby "2.7.1"
 
 gem 'sinatra'
 gem 'activerecord'
@@ -12,7 +13,10 @@ gem 'pg'
 gem 'shotgun'
 gem 'bcrypt'
 gem 'date'
-ruby "2.7.1"
+
+# AUTHENTICATION
+gem 'dotenv', groups: [:development, :test]
+gem 'ginjo-omniauth-slack', require: 'omniauth-slack'
 
 group :development, :test do
   gem 'pry'
