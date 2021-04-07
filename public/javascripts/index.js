@@ -9,6 +9,13 @@ $(document).ready(function() {
     select += '<option value=' + getHour(i) + ':30' + '>' + getHour(i) + ':30' + '</option>';
   }
   $('#time').html(select);
+
+  $(".day").click(function() {
+    $(".day").removeClass("chosenDay");
+    $(this).addClass("chosenDay");
+    let session_date = $(this).data("date");
+    $("#session_date").val(session_date);
+  })
 });
 
 function getDayNumber(date) {

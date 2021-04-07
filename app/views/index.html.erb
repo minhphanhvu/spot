@@ -75,11 +75,10 @@ end %>
 
 <form action="/new/lead/<%= params[:username] %>" method="post">
 
-  <!--<label for="time">Choose a time for your session:</label>
-  <input type="time" step="3600" id="time"
-        name=time">-->
+  <input type="hidden" id="session_date" name="session_date" value="">
+
   <label for="time">Choose a time for your session:</label>
-  <select id="time" name="name"></select>
+  <select id="time" name="time"></select>
 
   <label for="course_id">Choose a course to lead:</label>
   <select name="course_id" id="cars">

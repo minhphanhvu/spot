@@ -16,6 +16,7 @@ class UsersController < ApplicationController
 
   # Lead register a new session
   post '/new/lead/:username' do
+    binding.pry
     user = User.find_by(username: params[:username])
     lead_id = user.id
     course_id = params[:course_id]

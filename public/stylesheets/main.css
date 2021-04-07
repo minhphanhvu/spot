@@ -74,7 +74,7 @@ tr:first-child th {
 .weekendDay {
   background-color: #ffffdd;
 }
-.today{
+.chosenDay{
 	background-color: #4682b4;
 }
 .weekNumber {
