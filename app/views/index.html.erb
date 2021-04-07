@@ -68,11 +68,18 @@
 </section>
 
 <h2>Create a new spot and sign up to lead it</h2>
+
+<%= calendar({:year => @year, :month => @month, :abbrev => false, :show_other_months => false, :next_month_text => 'Next month'}) do |date|
+  date
+end %>
+
 <form action="/new/lead/<%= params[:username] %>" method="post">
 
-  <label for="spot_time">Choose a time for your session:</label>
-  <input type="datetime-local" id="spot_time"
-        name="spot_time">
+  <!--<label for="time">Choose a time for your session:</label>
+  <input type="time" step="3600" id="time"
+        name=time">-->
+  <label for="time">Choose a time for your session:</label>
+  <select id="time" name="name"></select>
 
   <label for="course_id">Choose a course to lead:</label>
   <select name="course_id" id="cars">
@@ -84,7 +91,3 @@
   <input type="submit" value="Register a spot session">
 
 </form>
-
-<%= calendar({:year => @year, :month => @month, :abbrev => false, :show_other_months => false, :next_month_text => 'Next month'}) do |date|
-  date
-end %>
